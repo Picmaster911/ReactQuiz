@@ -1,25 +1,24 @@
-import logo from './logo.svg';
 import './App.css';
+import {useState} from "react";
+import MuiBottomNavigation from "./components/MuiBottomNavigation";
+import TopMenuComponent from "./components/TopMenuComponent";
+import ItemCardComponent from "./components/ItemCardComponent";
+import QuizList from "./pages/QuizList";
+import CompMuiDrawer from "./components/CompMuiDrawer";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    let [counter,setCounter] = useState(0)
+    const handelClickCounter = () => {
+        setCounter(counter +=1);
+        console.log(counter);
+    }
+    return (
+        <div className="App">
+            <TopMenuComponent/>
+            <CompMuiDrawer />
+            <QuizList/>
+            <MuiBottomNavigation/>
+        </div>
+    );
 }
-
 export default App;
