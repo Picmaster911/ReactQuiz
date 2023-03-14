@@ -7,11 +7,12 @@ import QuizList from "./pages/QuizList";
 import CompMuiDrawer from "./components/CompMuiDrawer";
 
 function App() {
-    let [counter,setCounter] = useState(0)
-    const handelClickCounter = () => {
-        setCounter(counter +=1);
-        console.log(counter);
-    }
+    let [counter,setCounter] = useState(0) //  Missing semicolon
+    //DO YOU NEED THIS FUNCTION????
+//     const handelClickCounter = () => {
+//         setCounter(counter +=1);
+//         console.log(counter);
+//     }
     return (
         <div className="App">
             <TopMenuComponent/>
