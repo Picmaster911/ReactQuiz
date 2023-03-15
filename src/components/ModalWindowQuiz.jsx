@@ -23,8 +23,8 @@ export default function ModalWindowQuiz ({ handler,handleClose,img,info,quiz }){
     return (
         <React.Fragment>
         <Modal
-            open={handler}
-            onClose={handleClose}
+            open={ handler }
+            onClose={ handleClose }
             aria-labelledby="modal-modal-title"
             aria-describedby="modal-modal-description"
         >
@@ -47,12 +47,12 @@ export default function ModalWindowQuiz ({ handler,handleClose,img,info,quiz }){
                     onClick={ handleClose }>
                     <CloseIcon/>
                 </IconButton>
-                <img width='300px' src={img}/>
+                <img width='300px' src={ img }/>
                 <Typography  variant="h6" component="h2">
                     {quiz}
                 </Typography>
                 <Typography  sx={{ mt: 2 }}>
-                    {info}
+                    { info }
                 </Typography>
             </Box>
         </Modal>

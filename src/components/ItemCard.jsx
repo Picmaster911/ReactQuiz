@@ -10,7 +10,7 @@ import {
 import ModalWindowQuiz from "./ModalWindowQuiz";
 import Notification from "./Notification";
 
-export default function ItemCard ({quiz}) {
+export default function ItemCard ({ quiz }) {
     let [ clickYes,handleClickOpen ] = useState(false);
     const handleOpen = () => handleClickOpen(true);
     const handleClose = () => handleClickOpen(false);
@@ -22,30 +22,30 @@ export default function ItemCard ({quiz}) {
             <Card >
                 <CardMedia
                     component="img"
-                    alt={quiz.Quiz}
-                    image={quiz.Foto}
+                    alt={ quiz.Quiz }
+                    image={ quiz.Foto }
                 />
                 <CardContent>
                     <Typography gutterBottom variant="h5" component="div">
-                        {quiz.Quiz}
+                        { quiz.Quiz }
                     </Typography>
                     <Typography variant="body2" color="text.secondary">
-                        {quiz.Answer}
+                        { quiz.Answer }
                     </Typography>
                 </CardContent>
                 <CardActions>
-                    <Button onClick={handleOpen} size="small">Show More</Button>
-                    <Button onClick={alertQuiz} size="small">Start quiz</Button>
+                    <Button onClick={ handleOpen } size="small">Show More</Button>
+                    <Button onClick={ alertQuiz } size="small">Start quiz</Button>
                 </CardActions>
                 <ModalWindowQuiz
-                    handler={clickYes}
-                    handleClose={handleClose}
-                    img={quiz.Foto}
-                    info={quiz.Answer}
-                    quiz={quiz.Quiz}
+                    handler={ clickYes }
+                    handleClose={ handleClose }
+                    img={ quiz.Foto }
+                    info={ quiz.Answer }
+                    quiz={ quiz.Quiz }
                 />
             </Card>
-            <Notification open={alertShow} handleClose={alertResetQuiz}/>
+            <Notification open={ alertShow } handleClose={ alertResetQuiz }/>
         </Grid>
     )
 }

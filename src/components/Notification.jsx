@@ -1,8 +1,9 @@
-import * as React from 'react';
+import React from 'react';
 import {
     Stack,
     Snackbar
-} from "@mui/material";
+}
+from "@mui/material";
 
 export default function Notification ({ open,handleClose }) {
     return (

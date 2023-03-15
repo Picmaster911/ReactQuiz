@@ -1,8 +1,10 @@
-import React from "react";
-import { useState } from "react";
-import BottomNavigation from '@mui/material/BottomNavigation';
-import {BottomNavigationAction, Box} from "@mui/material";
+import React, { useState } from "react";
 import AddAPhotoIcon from '@mui/icons-material/AddAPhoto';
+import {
+    BottomNavigationAction,
+    Box,
+    BottomNavigation
+} from "@mui/material";
 
 export  default function Footer () {
     let [ value,setValue ] = useState(0);
