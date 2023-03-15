@@ -7,8 +7,8 @@ import {
     Toolbar,
     Typography
 } from "@mui/material";
-
 import MenuIcon from '@mui/icons-material/Menu';
+
 export  default function NavBar ({ openDrawer }) {
     return (
         <Box sx={{ flexGrow: 1 }}>

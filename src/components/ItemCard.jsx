@@ -8,11 +8,15 @@ import {
     Typography, Grid,
 } from '@mui/material';
 import ModalWindowQuiz from "./ModalWindowQuiz";
+import Notification from "./Notification";
 
 export default function ItemCard ({quiz}) {
     let [ clickYes,handleClickOpen ] = useState(false);
     const handleOpen = () => handleClickOpen(true);
     const handleClose = () => handleClickOpen(false);
+    let [ alertShow,handelClickAlert ] =useState(false);
+    const alertQuiz = () => handelClickAlert (true)
+    const alertResetQuiz = () => handelClickAlert (false)
     return (
         <Grid item xs={12} sm={6} md={4}>
             <Card >
@@ -30,8 +34,8 @@ export default function ItemCard ({quiz}) {
                     </Typography>
                 </CardContent>
                 <CardActions>
-                    <Button onClick={handleOpen} size="small">Show QUIZ </Button>
-                    <Button size="small">No</Button>
+                    <Button onClick={handleOpen} size="small">Show More</Button>
+                    <Button onClick={alertQuiz} size="small">Start quiz</Button>
                 </CardActions>
                 <ModalWindowQuiz
                     handler={clickYes}
@@ -41,6 +45,7 @@ export default function ItemCard ({quiz}) {
                     quiz={quiz.Quiz}
                 />
             </Card>
+            <Notification open={alertShow} handleClose={alertResetQuiz}/>
         </Grid>
     )
 }

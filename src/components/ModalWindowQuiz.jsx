@@ -1,6 +1,12 @@
 import React from "react";
-import {Box, Button, IconButton, Modal, Typography} from "@mui/material";
 import CloseIcon from '@mui/icons-material/Close';
+import {
+    Box,
+    IconButton,
+    Modal,
+    Typography
+}
+from "@mui/material";
 
 export default function ModalWindowQuiz ({ handler,handleClose,img,info,quiz }){
     const style = {
@@ -14,8 +20,8 @@ export default function ModalWindowQuiz ({ handler,handleClose,img,info,quiz }){
         boxShadow: 24,
         p: 4,
     };
-
     return (
+        <React.Fragment>
         <Modal
             open={handler}
             onClose={handleClose}
@@ -50,5 +56,6 @@ export default function ModalWindowQuiz ({ handler,handleClose,img,info,quiz }){
                 </Typography>
             </Box>
         </Modal>
+        </React.Fragment>
     )
 }
