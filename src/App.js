@@ -1,23 +1,21 @@
+import React from "react";
 import './App.css';
-import {useState} from "react";
-import MuiBottomNavigation from "./components/MuiBottomNavigation";
-import TopMenuComponent from "./components/TopMenuComponent";
-import ItemCardComponent from "./components/ItemCardComponent";
+import Footer from "./components/Footer";
+import NavBar from "./components/NavBar";
 import QuizList from "./pages/QuizList";
-import CompMuiDrawer from "./components/CompMuiDrawer";
+import DrawerLeft from "./components/DrawerLeft";
+import { useState } from "react";
 
 function App() {
-    let [counter,setCounter] = useState(0)
-    const handelClickCounter = () => {
-        setCounter(counter +=1);
-        console.log(counter);
-    }
+    let [watchOpenDrawel,handlerOpenDrawer] = useState(false);
+    const openDrawer = () => handlerOpenDrawer(true);
+    const closeDrawer = () => handlerOpenDrawer(false);
     return (
         <div className="App">
-            <TopMenuComponent/>
-            <CompMuiDrawer />
+            <NavBar openDrawer={ openDrawer }/>
+            <DrawerLeft watchOpenDrawel={ watchOpenDrawel } closeDrawer={ closeDrawer } />
             <QuizList/>
-            <MuiBottomNavigation/>
+            <Footer/>
         </div>
     );
 }
