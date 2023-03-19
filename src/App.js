@@ -1,61 +1,67 @@
 import React from "react";
 import './App.css';
-import { useState } from "react";
-import { Box, styled, Grid } from "@mui/material";
+import { Box, styled, Grid, useMediaQuery, useTheme } from "@mui/material";
 import QuizList from "./pages/QuizList";
 import Header from "./components/Header";
+import NavBar from "./components/NavBar";
 
 const HeadarWraper = styled(Box)(() => ({
-    backgroundColor: "red",
-    height: "150px",
+    backgroundColor: "rgb(55, 86, 145)",
+    height: "100px",
     display: "flex",
     alignItems: "center",
-    justifyContent:"center"
-  }));
+    justifyContent: "center"
+}));
 
-  const NavBarWraper = styled(Box)(() => ({
-    backgroundColor: "green",
+const NavBarWraper = styled(Box)(() => ({
+    backgroundColor: "rgb(130, 162, 223)",
     height: "100%",
     display: "flex",
-    alignItems: "center",
-    overflow: "hidden"
-  }));
+    overflow: "hidden",
+    justifyContent: "center",
+    paddingTop: "50px"
+}));
 
-  const BodyWraper = styled(Box)(() => ({
+const BodyWraper = styled(Box)(() => ({
     height: "100vh",
-    backgroundColor: "blue",
+    backgroundColor: "white",
     padding: "10px",
     overflow: "auto",
     padding: "40px"
 
-  }));
+}));
 
-  const FooterWraper = styled(Box)(() => ({
+const FooterWraper = styled(Box)(() => ({
     backgroundColor: "rgb(138, 144, 155)",
     height: "150px",
     display: "flex",
     alignItems: "center"
-  }));
+}));
 
 function App() {
-    let [watchOpenDrawel, handlerOpenDrawer] = useState(false);
-    const openDrawer = () => handlerOpenDrawer(true);
-    const closeDrawer = () => handlerOpenDrawer(false);
+    const theme = useTheme();
+    const isMatch = useMediaQuery(theme.breakpoints.down("md"));
     return (
         <div className="App">
             <Grid container >
                 <Grid item xs={12} >
                     <HeadarWraper>
-                        <Header/>
+                        <Header />
                     </HeadarWraper>
                 </Grid>
-                <Grid item xs={2} md={2} lg={2}>
+                <Grid item xs={0} md={2} lg={2}>
                     <NavBarWraper>
+                        {!isMatch ? <>
+                            <NavBar />
+                        </> :
+                            <>
+                            </>
+                        }
                     </NavBarWraper>
                 </Grid>
-                <Grid item xs={10} >
+                <Grid item xs={12} md={10} lg={10} >
                     <BodyWraper>
-                        <QuizList/>
+                       <QuizList />
                     </BodyWraper>
                 </Grid>
                 <Grid item xs={12} >

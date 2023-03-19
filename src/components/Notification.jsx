@@ -1,27 +1,27 @@
 import React from 'react';
 import {
     Stack,
-    Snackbar
+    Snackbar,
 }
-from "@mui/material";
+    from "@mui/material";
 
-export default function Notification ({ open,handleClose }) {
+export default function Notification({ open, handleClose }) {
     return (
         <div>
             <Stack spacing={2} sx={{ maxWidth: 600 }}>
                 <Snackbar
                     ContentProps={{
                         sx: {
-                            background: "red"
+                            background: "red",
+                            height: "100%"
                         }
                     }}
-                    sx={{ height: "100%" }}
                     anchorOrigin={{
                         vertical: "top",
                         horizontal: "center",
                     }}
-                    open={ open }
-                    onClose={ handleClose }
+                    open={open}
+                    onClose={handleClose}
                     message="Start Quiz"
                 />
             </Stack>

@@ -6,9 +6,9 @@ import {
     Modal,
     Typography
 }
-from "@mui/material";
+    from "@mui/material";
 
-export default function ModalWindowQuiz ({ handler,handleClose,img,info,quiz }){
+export default function ModalWindowQuiz({ handler, handleClose, img, info, quiz }) {
     const style = {
         position: 'absolute',
         top: '50%',
@@ -22,40 +22,40 @@ export default function ModalWindowQuiz ({ handler,handleClose,img,info,quiz }){
     };
     return (
         <React.Fragment>
-        <Modal
-            open={ handler }
-            onClose={ handleClose }
-            aria-labelledby="modal-modal-title"
-            aria-describedby="modal-modal-description"
-        >
-            <Box sx={ style }>
-                <IconButton
-                    sx={{
-                        position: 'absolute',
-                        right:10,
-                        marginRight: '20px',
-                        flexDirection: 'row',
-                        boxShadow: 1,
-                        borderRadius: 2,
-                        minWidth: 10,
-                        backgroundColor: 'silver'
-                    }}
-                    size='small'
-                    edge='start'
-                    color='inherit'
-                    aria-label='logo'
-                    onClick={ handleClose }>
-                    <CloseIcon/>
-                </IconButton>
-                <img width='300px' src={ img }/>
-                <Typography  variant="h6" component="h2">
-                    {quiz}
-                </Typography>
-                <Typography  sx={{ mt: 2 }}>
-                    { info }
-                </Typography>
-            </Box>
-        </Modal>
+            <Modal
+                open={handler}
+                onClose={handleClose}
+                aria-labelledby="modal-modal-title"
+                aria-describedby="modal-modal-description"
+            >
+                <Box sx={style}>
+                    <IconButton
+                        sx={{
+                            position: 'absolute',
+                            right: 10,
+                            marginRight: '20px',
+                            flexDirection: 'row',
+                            boxShadow: 1,
+                            borderRadius: 2,
+                            minWidth: 10,
+                            backgroundColor: 'silver'
+                        }}
+                        size='small'
+                        edge='start'
+                        color='inherit'
+                        aria-label='logo'
+                        onClick={handleClose}>
+                        <CloseIcon />
+                    </IconButton>
+                    <img width='300px' src={img} />
+                    <Typography variant="h6" component="h2">
+                        {quiz}
+                    </Typography>
+                    <Typography sx={{ mt: 2 }}>
+                        {info}
+                    </Typography>
+                </Box>
+            </Modal>
         </React.Fragment>
     )
 }
