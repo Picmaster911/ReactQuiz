@@ -11,9 +11,9 @@ import ModalWindowQuiz from "./ModalWindowQuiz";
 import Notification from "./Notification";
 
 export default function ItemCard ({ quiz }) {
-    let [ clickYes,handleClickOpen ] = useState(false);
-    const handleOpen = () => handleClickOpen(true);
-    const handleClose = () => handleClickOpen(false);
+    let [ showModal,handleClickOpen ] = useState(false);
+    const handleOpenModal = () => handleClickOpen(true);
+    const handleCloseModal = () => handleClickOpen(false);
     let [ alertShow,handelClickAlert ] =useState(false);
     const alertQuiz = () => handelClickAlert (true)
     const alertResetQuiz = () => handelClickAlert (false)
@@ -34,12 +34,12 @@ export default function ItemCard ({ quiz }) {
                     </Typography>
                 </CardContent>
                 <CardActions>
-                    <Button onClick={ handleOpen } size="small">Show More</Button>
+                    <Button onClick={ handleOpenModal } size="small">Show More</Button>
                     <Button onClick={ alertQuiz } size="small">Start quiz</Button>
                 </CardActions>
                 <ModalWindowQuiz
-                    handler={ clickYes }
-                    handleClose={ handleClose }
+                    handler={ showModal }
+                    handleClose={ handleCloseModal }
                     img={ quiz.Foto }
                     info={ quiz.Answer }
                     quiz={ quiz.Quiz }

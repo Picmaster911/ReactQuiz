@@ -2,6 +2,7 @@ import React from "react";
 import ItemCard from "../components/ItemCard";
 import { useEffect, useState,} from "react";
 import axios from "axios";
+import { Grid } from "@mui/material";
 
 export  default function QuizList () {
     let [ quiz,setQuiz ] = useState([]);
@@ -12,10 +13,10 @@ export  default function QuizList () {
         })();
     },[]);
     return(
-        <div className="wrapper">
+        <Grid container spacing={4} >
             { quiz.map((quiz,index) =>
                 <ItemCard key={ quiz.id } quiz={ quiz }/>
             )}
-        </div>
+       </Grid>
     )
 }
