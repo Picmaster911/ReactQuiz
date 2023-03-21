@@ -66,4 +66,3 @@ export default class ModalWindowQuiz extends Component {
         )
     }
 }
-// export default function ModalWindowQuiz({ handler, handleClose, img, info, quiz })
