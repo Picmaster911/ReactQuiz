@@ -1,13 +1,19 @@
-import React from 'react';
+import { Component } from "react";
 import {
     Stack,
     Snackbar,
 }
     from "@mui/material";
 
-export default function Notification({ open, handleClose }) {
+export default class Notification extends Component {
+    constructor() {
+        super();
+    }
+
+    render() {
+        const { open, handleClose } = this.props
     return (
-        <div>
+        <>
             <Stack spacing={2} sx={{ maxWidth: 600 }}>
                 <Snackbar
                     ContentProps={{
@@ -25,6 +31,7 @@ export default function Notification({ open, handleClose }) {
                     message="Start Quiz"
                 />
             </Stack>
-        </div>
+        </>
     );
+}
 }

@@ -1,6 +1,6 @@
-import React from "react";
+import { Component } from "react";
 import './App.css';
-import { Box, styled, Grid, useMediaQuery, useTheme } from "@mui/material";
+import { Box, styled, Grid } from "@mui/material";
 import QuizList from "./pages/QuizList";
 import Header from "./components/Header";
 import NavBar from "./components/NavBar";
@@ -38,37 +38,32 @@ const FooterWraper = styled(Box)(() => ({
     alignItems: "center"
 }));
 
-function App() {
-    const theme = useTheme();
-    const isMatch = useMediaQuery(theme.breakpoints.down("md"));
-    return (
-        <div className="App">
-            <Grid container >
-                <Grid item xs={12} >
-                    <HeadarWraper>
-                        <Header />
-                    </HeadarWraper>
-                </Grid>
-                <Grid item xs={0} md={2} lg={2}>
-                    <NavBarWraper>
-                        {!isMatch ? <>
+class App extends Component {
+    render() {
+        return (
+            <div className="App">
+                <Grid container >
+                    <Grid item xs={12} >
+                        <HeadarWraper>
+                            <Header />
+                        </HeadarWraper>
+                    </Grid>
+                    <Grid item xs={0} md={2} lg={2}>
+                        <NavBarWraper>
                             <NavBar />
-                        </> :
-                            <>
-                            </>
-                        }
-                    </NavBarWraper>
+                        </NavBarWraper>
+                    </Grid>
+                    <Grid item xs={12} md={10} lg={10} >
+                        <BodyWraper>
+                            <QuizList />
+                        </BodyWraper>
+                    </Grid>
+                    <Grid item xs={12} >
+                        <FooterWraper></FooterWraper>
+                    </Grid>
                 </Grid>
-                <Grid item xs={12} md={10} lg={10} >
-                    <BodyWraper>
-                       <QuizList />
-                    </BodyWraper>
-                </Grid>
-                <Grid item xs={12} >
-                    <FooterWraper></FooterWraper>
-                </Grid>
-            </Grid>
-        </div>
-    );
+            </div>
+        );
+    }
 }
 export default App;
