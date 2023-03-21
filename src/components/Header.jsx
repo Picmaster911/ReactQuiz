@@ -26,10 +26,8 @@ export default class Header extends Component {
                             Site  QUIZ
                         </Typography>
                     </Grid>
-                    <Grid item xs={6} sx={{ display: { xs: 'block', md: 'none', lg: 'none' } }}
-                    >
-                        <Typography style={StyleCentr}
-                        >
+                    <Grid item xs={6} sx={{ display: { xs: 'block', md: 'none', lg: 'none' } }}>
+                        <Typography style={StyleCentr}>
                             <FormatListBulletedIcon />
                         </Typography>
                     </Grid>
