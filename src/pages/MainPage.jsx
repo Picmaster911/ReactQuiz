@@ -13,13 +13,14 @@ import Header from '../components/Header';
 import InfoMainPage from '../components/InfoMainPage';
 import AddQuizForm from './AddQuizForm';
 
-export default function MainPage() {
+export default function MainPage({ selectQuiz }) {
   const HeadarWraper = styled(Box)(() => ({
     backgroundColor: 'rgb(55, 86, 145)',
-    height: '100px',
+    height: '230px',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
+    backgroundImage: `url('https://phonoteka.org/uploads/posts/2022-02/1643955467_10-phonoteka-org-p-fon-dlya-khedera-21.jpg')`
   }));
 
   const NavBarWraper = styled(Box)(() => ({
@@ -40,7 +41,7 @@ export default function MainPage() {
 
   const FooterWraper = styled(Box)(() => ({
     backgroundColor: 'rgb(138, 144, 155)',
-    height: '150px',
+    height: '230px',
     display: 'flex',
     alignItems: 'center',
   }));
@@ -58,7 +59,7 @@ export default function MainPage() {
     <Grid container>
       <Grid item xs={12}>
         <HeadarWraper>
-          <Header />
+          <Header selectQuiz={selectQuiz} />
         </HeadarWraper>
       </Grid>
       <Grid item xs={0} md={2} lg={2}>

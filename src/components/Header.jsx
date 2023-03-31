@@ -1,15 +1,30 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   Typography,
-  Button,
   Grid,
-  Stack,
   useMediaQuery,
   useTheme,
+  Box,
 } from '@mui/material';
 import HomeIcon from '@mui/icons-material/Home';
 
-export default function Header() {
+export default function Header({ selectQuiz }) {
+  const [timeQuizSec, setTimeQuizSec] = useState(0);
+  const [timeQuizMin, setTimeQuizMin] = useState(0);
+
+  if (selectQuiz.start) {
+    console.log (timeQuizSec);
+    useEffect(() => {
+      const timerID = setInterval(() => {
+        setTimeQuizSec(timeQuizSec + 1);
+        if (timeQuizSec >= 59) {
+          setTimeQuizSec(timeQuizSec * 0);
+          setTimeQuizMin(timeQuizMin + 1);
+        }
+      }, 1000);
+      return () => clearInterval(timerID);
+    }, [timeQuizSec]);
+  }
   const GridStyle = {
     display: 'flex',
     justifyContent: 'center',
@@ -20,32 +35,28 @@ export default function Header() {
   return (
     <>
       <Grid container style={{ alignItems: 'baseline' }}>
-        <Grid item xs={6} style={GridStyle}>
+        <Grid item xs={2} md={0} style={GridStyle}>
+          {!isMatch ? <></> : <HomeIcon />}
+        </Grid>
+        <Grid item xs={8} md={4} style={GridStyle}>
           <Typography
-            variant='h1'
-            component='h2'
-            sx={{ fontSize: { xs: 35, md: 65 } }}
+            variant="h4"
+            component="h4"
+            sx={{ fontSize: { xs: 25, md: 45 } }}
           >
-            Site QUIZ
+            QUIZ {selectQuiz.Quiz}:Time = {timeQuizMin}:{timeQuizSec}
           </Typography>
         </Grid>
-        <Grid item xs={6} style={GridStyle}>
-          {isMatch ? (
-            <>
-              <Typography>
-                <HomeIcon />
-              </Typography>
-            </>
+        <Grid item xs={5} md={4} style={GridStyle}>
+          {!isMatch ? (
+            <Box sx={{ padding: '20px' }}>
+              <img width="150" src={selectQuiz.Foto} alt={selectQuiz.Quiz} />
+            </Box>
           ) : (
-            <Stack direction='row' spacing={2}>
-              <Button variant='contained'>Primary</Button>
-              <Button variant='contained'>Secondary</Button>
-              <Button variant='contained' href='#outlined-buttons'>
-                Link
-              </Button>
-            </Stack>
+            <></>
           )}
         </Grid>
+        <Grid item xs={0} style={GridStyle}></Grid>
       </Grid>
     </>
   );

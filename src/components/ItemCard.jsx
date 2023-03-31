@@ -15,12 +15,12 @@ import ModalWindowQuiz from './ModalWindowQuiz';
 import Notification from './Notification';
 import { controllerPost } from '../api/controller';
 
-export default function ItemCard({ quiz, noButton }) {
-  const [check, handleCheck] = useState(quiz.Favorit);
+export default function ItemCard({ quiz, noButton, callBackItemQuiz }) {
   const [showModal, handleClickOpen] = useState(false);
+  const [check, handleCheck] = useState(quiz.Favorit);
   const handleCloseModal = () => handleClickOpen(false);
+  const handleOpenModal = () => handleClickOpen(true);
   const [alertShow, handelClickAlert] = useState(false);
-  const alertQuiz = () => handelClickAlert(true);
   const alertResetQuiz = () => handelClickAlert(false);
   async function handleChangeBox() {
     const { data } = await controllerPost.post({
@@ -34,7 +34,10 @@ export default function ItemCard({ quiz, noButton }) {
     display: 'block',
     maxWidth: '500px',
   };
-
+  const startQuiz = () => {
+    callBackItemQuiz(quiz);
+    console.log(showModal);
+  };
   return (
     <Grid item xs={12} sm={6} md={4}>
       <Card style={cardStyle}>
@@ -62,12 +65,16 @@ export default function ItemCard({ quiz, noButton }) {
             <></>
           ) : (
             <Button size='small'>
-              <Link to={`${quiz.Quiz}`}>Action 1</Link>
+              <Link to={`${quiz.Quiz}`}>Переглянуты Quiz</Link>
             </Button>
           )}
-          <Button onClick={alertQuiz} size='small'>
+           {noButton === 'true' ? (
+            <Button onClick={startQuiz} size='small'>
             Start quiz
           </Button>
+           ) : (
+            <></>
+           )}
         </CardActions>
         <ModalWindowQuiz
           handler={showModal}
