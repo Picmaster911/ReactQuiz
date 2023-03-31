@@ -1,6 +1,10 @@
 import axios from './service';
 
 const controller = {
-  get: () => axios.get('/quiz').then((data) => data),
+  get: (req) => axios.get(req).then((data) => data),
 };
-export default controller;
+
+const controllerPost = {
+  post: (req) => axios.put(`/quiz/${req.id}`, req).then((data) => data),
+};
+export { controller, controllerPost };

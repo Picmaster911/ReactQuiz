@@ -1,13 +1,23 @@
 import React from 'react';
-import { Button, Stack } from '@mui/material';
+import {
+  Box,
+  Button,
+  Stack,
+  TextField,
+} from '@mui/material';
+import { Link } from 'react-router-dom';
 
-export default function NavBar() {
+export default function NavBar({ callBackFind, openFormAddQuiz }) {
   return (
     <Stack direction='column' spacing={2}>
-      <Button variant='contained'>Action 1</Button>
-      <Button variant='contained'>Action 2</Button>
-      <Button variant='contained' href='#outlined-buttons'>
-        Action 3
+      <Box>
+         <TextField id='outlined-basic' label='Outlined' variant='outlined' onChange={callBackFind} />
+       </Box>
+      <Button variant='contained'>
+        <Link to='/quiz'>Картки для тестування</Link>
+      </Button>
+      <Button onClick={openFormAddQuiz} variant='contained'>
+        Додаты новый Quiz
       </Button>
     </Stack>
   );

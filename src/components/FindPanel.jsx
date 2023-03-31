@@ -1,12 +1,21 @@
-import { TextField, Box } from '@mui/material';
-import React from 'react';
+import { React, useEffect, useState } from 'react';
+import { Grid } from '@mui/material';
+import ItemCard from './ItemCard';
+import { controller } from '../api/controller';
 
-export default function FindPanel() {
+export default function FindPanel({ req, noButton }) {
+  const [quiz, setQuiz] = useState([]);
+  useEffect(() => {
+    (async () => {
+      const { data } = await controller.get(req);
+      setQuiz(data);
+    })();
+  }, []);
   return (
-    <>
-       <Box>
-         <TextField id='outlined-basic' label='Outlined' variant='outlined' />
-       </Box>
-    </>
+    <Grid container spacing={4}>
+      {quiz.map((quiz) => (
+        <ItemCard key={quiz.id} quiz={quiz} noButton={noButton} />
+      ))}
+    </Grid>
   );
 }
