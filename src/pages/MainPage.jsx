@@ -12,15 +12,17 @@ import NavBar from '../components/NavBar';
 import Header from '../components/Header';
 import InfoMainPage from '../components/InfoMainPage';
 import AddQuizForm from './AddQuizForm';
+import background from '../components/img/fon.jpg';
+import backgroundHeader from '../components/img/Header.jpg';
 
-export default function MainPage({ selectQuiz }) {
+export default function MainPage() {
   const HeadarWraper = styled(Box)(() => ({
     backgroundColor: 'rgb(55, 86, 145)',
     height: '230px',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundImage: `url('https://phonoteka.org/uploads/posts/2022-02/1643955467_10-phonoteka-org-p-fon-dlya-khedera-21.jpg')`
+    backgroundImage: `url(${backgroundHeader})`,
   }));
 
   const NavBarWraper = styled(Box)(() => ({
@@ -34,9 +36,9 @@ export default function MainPage({ selectQuiz }) {
 
   const BodyWraper = styled(Box)(() => ({
     height: '100vh',
-    backgroundColor: 'white',
     overflow: 'auto',
     padding: '40px',
+    backgroundImage: `url(${background})`,
   }));
 
   const FooterWraper = styled(Box)(() => ({
@@ -49,9 +51,6 @@ export default function MainPage({ selectQuiz }) {
   const { pathname } = useLocation();
   const theme = useTheme();
   const isMatch = useMediaQuery(theme.breakpoints.down('md'));
-  const callBackFind = (e) => {
-    console.log(e.target.value);
-  };
   const [showForm, setFormAddQuiz] = useState(false);
   const openFormAddQuiz = () => setFormAddQuiz(true);
   const closeFormAddQuiz = () => setFormAddQuiz(false);
@@ -59,14 +58,14 @@ export default function MainPage({ selectQuiz }) {
     <Grid container>
       <Grid item xs={12}>
         <HeadarWraper>
-          <Header selectQuiz={selectQuiz} />
+          <Header/>
         </HeadarWraper>
       </Grid>
       <Grid item xs={0} md={2} lg={2}>
         <NavBarWraper>
           {!isMatch ? (
             <>
-              <NavBar callBackFind={callBackFind} openFormAddQuiz={openFormAddQuiz}/>
+              <NavBar openFormAddQuiz={openFormAddQuiz}/>
             </>
           ) : (
             <></>

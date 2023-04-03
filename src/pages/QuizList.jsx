@@ -3,7 +3,7 @@ import { Grid } from '@mui/material';
 import ItemCard from '../components/ItemCard';
 import { controller } from '../api/controller';
 
-export default function QuizList({ req, noButton, callBackItemQuiz }) {
+export default function QuizList({ req, noButton }) {
   const [quiz, setQuiz] = useState([]);
   useEffect(() => {
     (async () => {
@@ -14,7 +14,7 @@ export default function QuizList({ req, noButton, callBackItemQuiz }) {
   return (
     <Grid container spacing={4}>
       {quiz.map((quiz) => (
-        <ItemCard key={quiz.id} quiz={quiz} noButton={noButton} callBackItemQuiz={callBackItemQuiz} />
+        <ItemCard key={quiz.id} quiz={quiz} noButton={noButton}/>
       ))}
     </Grid>
   );

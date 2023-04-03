@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import {
   Typography,
   Grid,
@@ -8,23 +8,7 @@ import {
 } from '@mui/material';
 import HomeIcon from '@mui/icons-material/Home';
 
-export default function Header({ selectQuiz }) {
-  const [timeQuizSec, setTimeQuizSec] = useState(0);
-  const [timeQuizMin, setTimeQuizMin] = useState(0);
-
-  if (selectQuiz.start) {
-    console.log (timeQuizSec);
-    useEffect(() => {
-      const timerID = setInterval(() => {
-        setTimeQuizSec(timeQuizSec + 1);
-        if (timeQuizSec >= 59) {
-          setTimeQuizSec(timeQuizSec * 0);
-          setTimeQuizMin(timeQuizMin + 1);
-        }
-      }, 1000);
-      return () => clearInterval(timerID);
-    }, [timeQuizSec]);
-  }
+export default function Header() {
   const GridStyle = {
     display: 'flex',
     justifyContent: 'center',
@@ -44,13 +28,12 @@ export default function Header({ selectQuiz }) {
             component="h4"
             sx={{ fontSize: { xs: 25, md: 45 } }}
           >
-            QUIZ {selectQuiz.Quiz}:Time = {timeQuizMin}:{timeQuizSec}
+            QUIZ
           </Typography>
         </Grid>
         <Grid item xs={5} md={4} style={GridStyle}>
           {!isMatch ? (
             <Box sx={{ padding: '20px' }}>
-              <img width="150" src={selectQuiz.Foto} alt={selectQuiz.Quiz} />
             </Box>
           ) : (
             <></>

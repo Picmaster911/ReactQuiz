@@ -8,7 +8,7 @@ import {
 } from '@mui/material';
 
 export default function ModalWindowQuiz({
-  handler,
+  showModal,
   handleClose,
   img,
   info,
@@ -25,10 +25,11 @@ export default function ModalWindowQuiz({
     boxShadow: 24,
     p: 4,
   };
+  // callBackItemQuiz(quiz);
   return (
     <React.Fragment>
       <Modal
-        open={handler}
+        open={showModal}
         onClose={handleClose}
         aria-labelledby='modal-modal-title'
         aria-describedby='modal-modal-description'
