@@ -1,22 +1,26 @@
-import React from "react";
+import React from 'react';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './App.css';
-import Footer from "./components/Footer";
-import NavBar from "./components/NavBar";
-import QuizList from "./pages/QuizList";
-import DrawerLeft from "./components/DrawerLeft";
-import { useState } from "react";
+import QuizRoutes from './components/routs/QuizRoutes';
+import MainPage from './pages/MainPage';
+import QuizList from './pages/QuizList';
+import StartQuiz from './pages/StartQuiz';
+import Result from './pages/Result';
 
 function App() {
-    let [watchOpenDrawel,handlerOpenDrawer] = useState(false);
-    const openDrawer = () => handlerOpenDrawer(true);
-    const closeDrawer = () => handlerOpenDrawer(false);
-    return (
-        <div className="App">
-            <NavBar openDrawer={ openDrawer }/>
-            <DrawerLeft watchOpenDrawel={ watchOpenDrawel } closeDrawer={ closeDrawer } />
-            <QuizList/>
-            <Footer/>
-        </div>
-    );
+  return (
+    <BrowserRouter>
+    <div className='App'>
+    <Routes>
+      <Route path='/' element={<MainPage/>}>
+        <Route path='/quiz' element={<QuizList req={'/quiz'} />}/>
+        <Route path='/quiz/:pathQuiz' element={<QuizRoutes />}/>
+        <Route path='/quiz/:pathQuiz/start' element={<StartQuiz/>}/>
+        <Route path='/quiz/result' element={<Result/>}/>
+      </Route>
+    </Routes>
+    </div>
+    </BrowserRouter>
+  );
 }
 export default App;
