@@ -63,19 +63,12 @@ export default function MainPage() {
       </Grid>
       <Grid item xs={0} md={2} lg={2}>
         <NavBarWraper>
-          {!isMatch ? (
-            <>
-              <NavBar openFormAddQuiz={openFormAddQuiz}/>
-            </>
-          ) : (
-            <></>
-          )}
+          {!isMatch ? (<><NavBar openFormAddQuiz={openFormAddQuiz}/></>) : (<></>)}
         </NavBarWraper>
       </Grid>
       <Grid item xs={12} md={10} lg={10}>
         <BodyWraper>
           <AddQuizForm showForm={showForm} closeFormAddQuiz={closeFormAddQuiz}/>
-        {/* <FindPanel req={'/quiz'} noButton={'false'}/> */}
           {pathname === '/' ? (<><InfoMainPage/></>) : (<><Outlet/></>)}
         </BodyWraper>
       </Grid>
