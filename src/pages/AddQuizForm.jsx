@@ -1,15 +1,8 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
-import { useForm } from 'react-hook-form';
-import { useParams } from 'react-router-dom';
-import { Typography, Button, Modal } from '@mui/material';
+import { Typography, TextField, Button, Modal } from '@mui/material';
 import { Box } from '@mui/material';
-import InputTextValidator from '../components/forms/InputTextValidator';
-import { quizsRules } from '../constants/rules';
-import addQuizs from '../store/quizs/thunks';
 
 export default function AddQuizForm({ showForm, closeFormAddQuiz }) {
-  const { pathQuiz } = useParams();
   const style = {
     position: 'absolute',
     top: '50%',
@@ -23,87 +16,41 @@ export default function AddQuizForm({ showForm, closeFormAddQuiz }) {
     width: '40%',
     maxWidth: '400px',
     minWidth: '200px',
-  };
-  const dispatch = useDispatch();
-  async function addQuiz(quiz) {
-    await dispatch(addQuizs.addQuizs(quiz));
-  }
-  const { control, handleSubmit, getValues } = useForm();
-  const onSubmit = () => {
-    let allQuiz = getValues();
-    let { Questions, Answer } = getValues();
-    Questions = Questions.split(',');
-    Answer = Answer.split(',');
-    allQuiz = {
-      ...allQuiz,
-      Questions,
-      Answer,
-      pathQuiz,
-    };
-    addQuiz(allQuiz);
-    closeFormAddQuiz();
+    // bgcolor: 'b5efff',
   };
   return (
     <React.Fragment>
       <Modal
         open={showForm}
         onClose={closeFormAddQuiz}
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
+        aria-labelledby='modal-modal-title'
+        aria-describedby='modal-modal-description'
       >
         <Box sx={style}>
-          <Typography variant="h5">Додати новый Quiz </Typography>
+          <Typography variant='h5'>Додати новый Quiz </Typography>
           <form>
-            <InputTextValidator
+            <TextField
               style={{ margin: '5px', width: '100%' }}
-              control={control}
-              name="Quiz"
-              label="Quiz"
-              variant="outlined"
-              rules={quizsRules.quiz}
+              type='text'
+              label='Quiz'
+              variant='outlined'
             />
             <br />
-            <InputTextValidator
+            <TextField
               style={{ margin: '5px', width: '100%' }}
               maxRows={4}
-              control={control}
-              name="Description"
-              label="Description"
-              variant="outlined"
-              rules={quizsRules.description}
+              type='text'
+              label='Foto'
+              variant='outlined'
             />
             <br />
-            <InputTextValidator
+            <TextField
               style={{ margin: '5px', width: '100%' }}
+              type='text'
+              label='Description'
+              variant='outlined'
               multiline
               rows={5}
-              control={control}
-              name="Questions"
-              label="Questions"
-              variant="outlined"
-              rules={quizsRules.questions}
-            />
-            <br />
-            <InputTextValidator
-              style={{ margin: '5px', width: '100%' }}
-              multiline
-              rows={5}
-              control={control}
-              name="Answer"
-              label="Answer"
-              variant="outlined"
-              rules={quizsRules.answer}
-            />
-            <br />
-            <InputTextValidator
-              style={{ margin: '5px', width: '100%' }}
-              multiline
-              rows={5}
-              control={control}
-              name="Foto"
-              label="Foto"
-              variant="outlined"
-              rules={quizsRules.foto}
             />
             <br />
           </form>
@@ -114,18 +61,10 @@ export default function AddQuizForm({ showForm, closeFormAddQuiz }) {
               marginTop: '20px',
             }}
           >
-            <Button
-              onClick={handleSubmit(onSubmit)}
-              variant="contained"
-              color="primary"
-            >
+            <Button variant='contained' color='primary'>
               Додати
             </Button>
-            <Button
-              onClick={closeFormAddQuiz}
-              variant="contained"
-              color="primary"
-            >
+            <Button onClick={closeFormAddQuiz} variant='contained' color='primary'>
               Скасувати
             </Button>
           </Box>
