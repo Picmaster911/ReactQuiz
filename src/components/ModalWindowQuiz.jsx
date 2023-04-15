@@ -25,7 +25,6 @@ export default function ModalWindowQuiz({
     boxShadow: 24,
     p: 4,
   };
-  // callBackItemQuiz(quiz);
   return (
     <React.Fragment>
       <Modal

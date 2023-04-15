@@ -2,10 +2,10 @@ import { React, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Grid } from '@mui/material';
 import ItemCard from '../components/ItemCard';
-import fetchQuizs from '../store/quizs/thunks';
+import fetchQuizs from '../store/quizes/thunks';
 
-export default function QuizList({ req, noButton }) {
-  const { filterQuizs } = useSelector((state) => state.quizSlice);
+export default function QuizsList({ req, noButton }) {
+  const { quizs } = useSelector((state) => state.quizesSlice);
   const dispatch = useDispatch();
   useEffect(() => {
     (async () => {
@@ -14,7 +14,7 @@ export default function QuizList({ req, noButton }) {
   }, []);
   return (
     <Grid container spacing={4}>
-      {filterQuizs.map((quiz) => (
+      {quizs.map((quiz) => (
         <ItemCard key={quiz.id} quiz={quiz} noButton={noButton} />
       ))}
     </Grid>
