@@ -11,20 +11,17 @@ import {
   Checkbox,
   Box,
 } from '@mui/material';
-import { useDispatch } from 'react-redux';
-import addFavorite from '../store/quizes/thunks';
+import { controllerPost } from '../api/controller';
 
 export default function ItemCard({ quiz, noButton }) {
   const [check, handleCheck] = useState(quiz.Favorit);
-  const dispatch = useDispatch();
-  function addFav() {
+  async function handleChangeBox() {
+    await controllerPost.post({
+      ...quiz,
+      Favorit: !check,
+    });
     handleCheck(!check);
-    const favQuiz = { ...quiz, Favorit: !quiz.Favorit };
-    (async () => {
-      await dispatch(addFavorite.addFavorite(favQuiz));
-    })();
   }
-
   const cardStyle = {
     display: 'block',
     maxWidth: '500px',
@@ -47,7 +44,7 @@ export default function ItemCard({ quiz, noButton }) {
               <Typography variant="body2" color="text.secondary">
                 Додати до улюблених
               </Typography>
-              <Checkbox onChange={addFav} checked={check} />
+              <Checkbox onChange={handleChangeBox} checked={check} />
             </Box>
           )}
         </CardContent>

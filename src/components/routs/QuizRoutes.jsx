@@ -6,8 +6,8 @@ export default function QuizRoutes() {
   const { pathQuiz } = useParams();
 
   return (
-    <>
-      <QuizList req={pathQuiz} noButton={'true'} />
-    </>
+          <>
+         <QuizList req={pathQuiz} noButton={'true'} />
+          </>
   );
 }
