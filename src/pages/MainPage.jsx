@@ -14,6 +14,7 @@ import InfoMainPage from '../components/InfoMainPage';
 import AddQuizForm from './AddQuizForm';
 import background from '../components/img/fon.jpg';
 import backgroundHeader from '../components/img/Header.jpg';
+import AddQuizsForm from './AddQuizsForm';
 
 export default function MainPage() {
   const HeadarWraper = styled(Box)(() => ({
@@ -54,6 +55,9 @@ export default function MainPage() {
   const [showForm, setFormAddQuiz] = useState(false);
   const openFormAddQuiz = () => setFormAddQuiz(true);
   const closeFormAddQuiz = () => setFormAddQuiz(false);
+  const [showFormQuizs, setFormAddQuizs] = useState(false);
+  const openFormAddQuizs = () => setFormAddQuizs(true);
+  const closeFormAddQuizs = () => setFormAddQuizs(false);
   return (
     <Grid container>
       <Grid item xs={12}>
@@ -63,12 +67,13 @@ export default function MainPage() {
       </Grid>
       <Grid item xs={0} md={2} lg={2}>
         <NavBarWraper>
-          {!isMatch ? (<><NavBar openFormAddQuiz={openFormAddQuiz}/></>) : (<></>)}
+          {!isMatch ? (<><NavBar openFormAddQuiz={openFormAddQuiz} openFormAddQuizs={openFormAddQuizs}/></>) : (<></>)}
         </NavBarWraper>
       </Grid>
       <Grid item xs={12} md={10} lg={10}>
         <BodyWraper>
           <AddQuizForm showForm={showForm} closeFormAddQuiz={closeFormAddQuiz}/>
+          <AddQuizsForm showForm={showFormQuizs} closeFormAddQuizs={closeFormAddQuizs}/>
           {pathname === '/' ? (<><InfoMainPage/></>) : (<><Outlet/></>)}
         </BodyWraper>
       </Grid>
